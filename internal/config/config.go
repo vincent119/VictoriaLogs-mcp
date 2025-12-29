@@ -18,7 +18,7 @@ type Config struct {
 type ServerConfig struct {
 	Name      string `mapstructure:"name"`
 	Version   string `mapstructure:"version"`
-	Transport string `mapstructure:"transport"` // stdio | tcp
+	Transport string `mapstructure:"transport"` // stdio | tcp | sse
 	TCPAddr   string `mapstructure:"tcp_addr"`
 }
 
@@ -77,8 +77,8 @@ func (c *Config) Validate() error {
 		return fmt.Errorf("server.name is required")
 	}
 
-	if c.Server.Transport != "stdio" && c.Server.Transport != "tcp" {
-		return fmt.Errorf("server.transport must be 'stdio' or 'tcp'")
+	if c.Server.Transport != "stdio" && c.Server.Transport != "tcp" && c.Server.Transport != "sse" {
+		return fmt.Errorf("server.transport must be 'stdio', 'tcp', or 'sse'")
 	}
 
 	if c.Server.Transport == "tcp" && c.Server.TCPAddr == "" {

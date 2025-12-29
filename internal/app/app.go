@@ -79,6 +79,8 @@ func (app *Application) Run() error {
 		return app.mcpServer.ServeStdio()
 	case "tcp":
 		return app.mcpServer.ServeTCP(app.cfg.Server.TCPAddr)
+	case "sse":
+		return app.mcpServer.ServeSSE(app.cfg.Server.TCPAddr)
 	default:
 		return app.mcpServer.ServeStdio()
 	}

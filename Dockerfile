@@ -31,7 +31,8 @@ COPY --from=builder /app/vlmcp .
 RUN echo "server:" > config.yaml && \
     echo "  name: \"victorialogs-mcp\"" >> config.yaml && \
     echo "  version: \"1.0.0\"" >> config.yaml && \
-    echo "  transport: \"stdio\"" >> config.yaml && \
+    echo "  transport: \"sse\"" >> config.yaml && \
+    echo "  tcp_addr: \":8080\"" >> config.yaml && \
     echo "victorialogs:" >> config.yaml && \
     echo "  url: \"http://localhost:9428\"" >> config.yaml && \
     echo "  timeout: \"30s\"" >> config.yaml && \
