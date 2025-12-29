@@ -1,5 +1,6 @@
+dockerfile: "./Dockerfile"
 startCommand:
   type: stdio
   config:
-    command: "./vlmcp"
+    command: "/app/vlmcp"
     args: []
