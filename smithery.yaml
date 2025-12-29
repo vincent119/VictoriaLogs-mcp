@@ -1,4 +1,4 @@
-dockerfile: "./Dockerfile"
+
 startCommand:
   type: stdio
   config:
