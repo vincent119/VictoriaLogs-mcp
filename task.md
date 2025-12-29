@@ -130,20 +130,20 @@
 
 ### 主文件
 
-- [/] `README.md` - 專案總覽、快速開始
+- [x] `README.md` - 專案總覽、快速開始
 
 ### 雙語文件
 
-- [ ] `docs/README.zh-TW.md` / `docs/README.en.md`
-- [ ] `docs/architecture.zh-TW.md` / `docs/architecture.en.md`
-- [ ] `docs/api-tools.zh-TW.md` / `docs/api-tools.en.md`
-- [ ] `docs/security.zh-TW.md` / `docs/security.en.md`
-- [ ] `docs/release-process.zh-TW.md` / `docs/release-process.en.md`
+- [x] `docs/README.zh-TW.md` (已整合至 README.md)
+- [x] `docs/architecture.zh-TW.md` - 架構設計
+- [x] `docs/api-tools.zh-TW.md` - API 與工具說明
+- [x] `docs/security.zh-TW.md` - 安全性設定
+- [x] `docs/release-process.zh-TW.md` - 發布流程
 
 ### 腳本
 
-- [ ] `scripts/dev_run.sh` - 開發環境啟動腳本
-- [ ] `scripts/release_build.sh` - Release 建置腳本
+- [x] `scripts/dev_run.sh` - 開發環境啟動腳本
+- [x] `scripts/release_build.sh` - Release 建置腳本
 
 ---
 
@@ -181,6 +181,6 @@
 | 4. Policy / Middleware | ✅ 完成 | 1.5 天 |
 | 5. MCP Server / Tools | ✅ 完成 | 2 天 |
 | 6. 品質與測試 | ✅ 完成 | 1 天 |
-| 7. 文件撰寫 | ⏳ 待完成 | 1 天 |
+| 7. 文件撰寫 | ✅ 完成 | 1 天 |
 | 8. 驗證與交付 | ✅ 完成 | 0.5 天 |
 | **總計** | | **約 9 天** |
