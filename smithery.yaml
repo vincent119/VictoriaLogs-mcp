@@ -1,0 +1,5 @@
+startCommand:
+  type: stdio
+  config:
+    command: "./vlmcp"
+    args: []
