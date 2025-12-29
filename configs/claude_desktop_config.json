@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "victorialogs": {
+      "command": "/path/to/vlmcp",
+      "args": ["--config", "/path/to/config.yaml"],
+      "env": {}
+    }
+  }
+}

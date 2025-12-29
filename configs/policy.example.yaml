@@ -1,0 +1,50 @@
+# VictoriaLogs MCP Server Policy 設定範例
+# =========================================
+
+# Redact 規則 - 敏感資訊遮罩
+redact:
+  enabled: true
+  patterns:
+    # IP 位址
+    - name: "ipv4"
+      pattern: '\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b'
+      replacement: "[REDACTED_IP]"
+
+    # Authorization Header
+    - name: "auth_header"
+      pattern: '(?i)(authorization|bearer|token)[:\s]+[^\s"]+'
+      replacement: "[REDACTED_AUTH]"
+
+    # Email
+    - name: "email"
+      pattern: '\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+      replacement: "[REDACTED_EMAIL]"
+
+    # Cookie
+    - name: "cookie"
+      pattern: '(?i)cookie[:\s]+[^\s;]+'
+      replacement: "[REDACTED_COOKIE]"
+
+# Allowlist 規則 - 允許查詢的 Stream 白名單
+allowlist:
+  enabled: false
+  # 允許的 stream patterns（支援 glob）
+  streams:
+    - "kubernetes/app/*"
+    - "kubernetes/service/*"
+  # 明確禁止的 streams
+  deny:
+    - "kubernetes/kube-system/*"
+    - "auth/*"
+    - "security/*"
+
+# 查詢限制
+query_limits:
+  # 最大查詢時間範圍
+  max_time_range: "6h"
+  # 單次查詢最大結果筆數
+  max_results: 5000
+  # 是否強制要求時間條件
+  require_time_filter: true
+  # 是否禁止無 filter 的全量掃描
+  deny_full_scan: true

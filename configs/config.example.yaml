@@ -1,0 +1,38 @@
+# VictoriaLogs MCP Server 設定範例
+# ===================================
+
+server:
+  name: "victorialogs-mcp"
+  version: "1.0.0"
+  transport: "stdio"        # stdio | tcp
+  tcp_addr: ":9090"         # 僅當 transport=tcp 時使用
+
+victorialogs:
+  url: "http://localhost:9428"
+  auth:
+    type: "none"            # none | basic | bearer
+    username: ""
+    password: ""
+    token: ""
+  timeout: "30s"            # HTTP 請求超時
+  query_timeout: "60s"      # 單次查詢最大執行時間
+  max_results: 5000
+
+policy:
+  rate_limit:
+    enabled: true
+    requests_per_minute: 60
+  allowlist:
+    enabled: false
+    streams: []             # 允許查詢的 stream patterns
+    # 範例:
+    # - "kubernetes/*"
+    # - "app/myservice/*"
+  circuit_breaker:
+    enabled: true
+    error_threshold: 5      # 連續 N 次錯誤觸發熔斷
+    timeout: "30s"          # 熔斷持續時間
+
+logging:
+  level: "info"             # debug | info | warn | error
+  format: "json"            # json | text

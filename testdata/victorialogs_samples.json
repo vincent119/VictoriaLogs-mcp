@@ -1,0 +1,68 @@
+{
+  "sample_logs": [
+    {
+      "_time": "2024-01-15T10:00:00Z",
+      "_msg": "Application started successfully",
+      "_stream": "app/myservice",
+      "level": "info",
+      "host": "server-01"
+    },
+    {
+      "_time": "2024-01-15T10:01:23Z",
+      "_msg": "Connection established to database",
+      "_stream": "app/myservice",
+      "level": "info",
+      "host": "server-01",
+      "database": "postgres"
+    },
+    {
+      "_time": "2024-01-15T10:05:45Z",
+      "_msg": "Error: connection timeout to redis",
+      "_stream": "app/myservice",
+      "level": "error",
+      "host": "server-01",
+      "error_code": "ETIMEDOUT"
+    },
+    {
+      "_time": "2024-01-15T10:10:00Z",
+      "_msg": "Request processed successfully",
+      "_stream": "kubernetes/pod",
+      "level": "info",
+      "namespace": "production",
+      "pod": "api-server-abc123"
+    },
+    {
+      "_time": "2024-01-15T10:15:30Z",
+      "_msg": "Warning: high memory usage detected",
+      "_stream": "kubernetes/node",
+      "level": "warn",
+      "node": "worker-01",
+      "memory_percent": 85.5
+    }
+  ],
+  "sample_streams": [
+    {"_stream": "app/myservice"},
+    {"_stream": "app/backend"},
+    {"_stream": "kubernetes/pod"},
+    {"_stream": "kubernetes/node"},
+    {"_stream": "nginx/access"}
+  ],
+  "sample_fields": [
+    {"name": "level", "hits": 1523},
+    {"name": "host", "hits": 1456},
+    {"name": "namespace", "hits": 892},
+    {"name": "error_code", "hits": 234},
+    {"name": "status_code", "hits": 1100}
+  ],
+  "sample_stats": {
+    "timestamps": [
+      "2024-01-15T10:00:00Z",
+      "2024-01-15T11:00:00Z",
+      "2024-01-15T12:00:00Z"
+    ],
+    "values": [156, 289, 412]
+  },
+  "sample_health_response": {
+    "status": "healthy"
+  }
+}
