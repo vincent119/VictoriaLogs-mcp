@@ -5,6 +5,7 @@ VictoriaLogs MCP Server 內建多層防護機制，確保在生產環境中的�
 ## 1. 認證與授權
 
 目前支援通過 `config.yaml` 配置 VictoriaLogs 的連線認證：
+
 - **Basic Auth**：使用者名稱/密碼。
 - **Bearer Token**：Token 認證。
 
@@ -44,6 +45,7 @@ policy:
 自動偵測並遮蔽回應中的敏感資訊。
 
 **預設遮蔽規則**：
+
 - Email 地址
 - IP 地址
 - Credit Card 號碼

@@ -3,7 +3,6 @@ package policy
 
 import (
 	"context"
-	"sync"
 )
 
 // Manager 策略管理器
@@ -12,7 +11,7 @@ type Manager struct {
 	rateLimit      *RateLimiter
 	redact         *Redactor
 	circuitBreaker *CircuitBreaker
-	mu             sync.RWMutex
+
 }
 
 // Config 策略設定
@@ -80,7 +79,7 @@ func NewManager(cfg Config) *Manager {
 }
 
 // CheckAllowlist 檢查 Allowlist
-func (m *Manager) CheckAllowlist(ctx context.Context, stream string) error {
+func (m *Manager) CheckAllowlist(_ context.Context, stream string) error {
 	if m.allowlist == nil {
 		return nil
 	}
@@ -88,7 +87,7 @@ func (m *Manager) CheckAllowlist(ctx context.Context, stream string) error {
 }
 
 // CheckRateLimit 檢查 Rate Limit
-func (m *Manager) CheckRateLimit(ctx context.Context, key string) error {
+func (m *Manager) CheckRateLimit(_ context.Context, key string) error {
 	if m.rateLimit == nil {
 		return nil
 	}
@@ -104,7 +103,7 @@ func (m *Manager) Redact(data string) string {
 }
 
 // CheckCircuitBreaker 檢查 Circuit Breaker
-func (m *Manager) CheckCircuitBreaker(ctx context.Context) error {
+func (m *Manager) CheckCircuitBreaker(_ context.Context) error {
 	if m.circuitBreaker == nil {
 		return nil
 	}

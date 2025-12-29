@@ -1,3 +1,4 @@
+// Package observability provides metrics and tracing
 package observability
 
 import (

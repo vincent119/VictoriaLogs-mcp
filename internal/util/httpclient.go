@@ -1,5 +1,5 @@
 // Package util 提供通用工具函式
-package util
+package util //nolint:revive
 
 import (
 	"context"
@@ -52,7 +52,7 @@ func WithTimeout(timeout time.Duration) HTTPClientOption {
 func WithInsecureSkipVerify() HTTPClientOption {
 	return func(c *HTTPClient) {
 		transport := c.client.Transport.(*http.Transport)
-		transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
+		transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: true} //nolint:gosec
 	}
 }
 

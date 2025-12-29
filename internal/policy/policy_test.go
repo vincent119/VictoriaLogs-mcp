@@ -59,7 +59,7 @@ func TestRateLimiter_GetRemaining(t *testing.T) {
 
 	// After 3 requests, should have 7 remaining
 	for i := 0; i < 3; i++ {
-		limiter.Allow("test-key")
+		_ = limiter.Allow("test-key")
 	}
 	if remaining := limiter.GetRemaining("test-key"); remaining != 7 {
 		t.Errorf("Expected 7 remaining, got %d", remaining)
@@ -74,8 +74,8 @@ func TestRateLimiter_Reset(t *testing.T) {
 	limiter := NewRateLimiter(cfg)
 
 	// Use up quota
-	limiter.Allow("test-key")
-	limiter.Allow("test-key")
+	_ = limiter.Allow("test-key")
+	_ = limiter.Allow("test-key")
 
 	// Reset
 	limiter.Reset("test-key")

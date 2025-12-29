@@ -35,7 +35,8 @@ func (t *TCPServer) Start(ctx context.Context) error {
 		)
 	}
 
-	listener, err := net.Listen("tcp", t.addr)
+	var lc net.ListenConfig
+	listener, err := lc.Listen(context.Background(), "tcp", t.addr)
 	if err != nil {
 		return fmt.Errorf("failed to start TCP listener: %w", err)
 	}

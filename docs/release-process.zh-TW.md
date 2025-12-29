@@ -30,6 +30,7 @@ make test
 ```
 
 此腳本會：
+
 1. 檢查 git 狀態是否乾淨。
 2. 執行測試。
 3. 編譯 macOS (arm64/amd64) 與 Linux (amd64/arm64) 版本。
@@ -39,7 +40,8 @@ make test
 ### 3. 發布 Artifacts
 
 產生的檔案結構：
-```
+
+```bash
 bin/release/
 ├── vlmcp-v1.0.0-darwin-arm64
 ├── vlmcp-v1.0.0-linux-amd64

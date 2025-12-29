@@ -150,7 +150,7 @@ func (s *MCPServer) handleSchema(ctx context.Context, request mcp.CallToolReques
 }
 
 // handleHealth handles vlogs-health request
-func (s *MCPServer) handleHealth(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+func (s *MCPServer) handleHealth(ctx context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	result, err := s.vlClient.Health(ctx)
 	if err != nil {
 		return mcp.NewToolResultError(fmt.Sprintf("health check failed: %v", err)), nil

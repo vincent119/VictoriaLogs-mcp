@@ -9,7 +9,7 @@ import (
 )
 
 // Helper to create a simple request
-func newTestRequest(toolName string) mcp.CallToolRequest {
+func newTestRequest(_ string) mcp.CallToolRequest {
 	return mcp.CallToolRequest{}
 }
 
@@ -20,7 +20,7 @@ func TestRateLimitMiddleware(t *testing.T) {
 	}
 	mw := NewRateLimitMiddleware(cfg)
 
-	handler := func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	handler := func(_ context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		return mcp.NewToolResultText("success"), nil
 	}
 
@@ -56,7 +56,7 @@ func TestRateLimitMiddleware_Disabled(t *testing.T) {
 	}
 	mw := NewRateLimitMiddleware(cfg)
 
-	handler := func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	handler := func(_ context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		return mcp.NewToolResultText("success"), nil
 	}
 
@@ -84,7 +84,7 @@ func TestCircuitBreakerMiddleware(t *testing.T) {
 	}
 	mw := NewCircuitBreakerMiddleware(cfg)
 
-	handler := func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	handler := func(_ context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		return mcp.NewToolResultText("success"), nil
 	}
 
@@ -108,7 +108,7 @@ func TestAuditMiddleware(t *testing.T) {
 	}
 	mw := NewAuditMiddleware(cfg)
 
-	handler := func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	handler := func(_ context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		return mcp.NewToolResultText("success"), nil
 	}
 
@@ -133,7 +133,7 @@ func TestRedactMiddleware(t *testing.T) {
 	mw := NewRedactMiddleware(cfg)
 
 	// Handler returns text with sensitive data
-	handler := func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	handler := func(_ context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		return mcp.NewToolResultText("password=secret123"), nil
 	}
 
@@ -171,13 +171,13 @@ func TestChain(t *testing.T) {
 		}
 	}
 
-	handler := func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	handler := func(_ context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		calls = append(calls, "handler")
 		return mcp.NewToolResultText("success"), nil
 	}
 
 	chained := Chain(mw1, mw2)(handler)
-	chained(context.Background(), newTestRequest("test"))
+	_, _ = chained(context.Background(), newTestRequest("test"))
 
 	expected := []string{"mw1-before", "mw2-before", "handler", "mw2-after", "mw1-after"}
 	if len(calls) != len(expected) {
@@ -192,7 +192,7 @@ func TestChain(t *testing.T) {
 }
 
 func TestNoopMiddleware(t *testing.T) {
-	handler := func(ctx context.Context, req mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+	handler := func(_ context.Context, _ mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 		return mcp.NewToolResultText("original"), nil
 	}
 

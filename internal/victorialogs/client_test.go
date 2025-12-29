@@ -34,7 +34,7 @@ func TestClient_Health(t *testing.T) {
 }
 
 func TestClient_Health_Unhealthy(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.WriteHeader(http.StatusServiceUnavailable)
 	}))
 	defer server.Close()
@@ -66,9 +66,9 @@ func TestClient_Query_InvalidQuery(t *testing.T) {
 }
 
 func TestClient_Query_APIError(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	server := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("invalid query syntax"))
+		_, _ = w.Write([]byte("invalid query syntax"))
 	}))
 	defer server.Close()
 
@@ -106,7 +106,7 @@ func TestClient_WithMaxResults(t *testing.T) {
 	}
 }
 
-func TestClient_Close(t *testing.T) {
+func TestClient_Close(_ *testing.T) {
 	client := NewClient("http://localhost:9428", util.AuthConfig{}, 10*time.Second)
 	client.Close()
 	client.Close() // Double close should not panic

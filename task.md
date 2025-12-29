@@ -134,11 +134,11 @@
 
 ### 雙語文件
 
-- [x] `docs/README.zh-TW.md` (已整合至 README.md)
-- [x] `docs/architecture.zh-TW.md` - 架構設計
-- [x] `docs/api-tools.zh-TW.md` - API 與工具說明
-- [x] `docs/security.zh-TW.md` - 安全性設定
-- [x] `docs/release-process.zh-TW.md` - 發布流程
+- [x] `docs/README.zh-TW.md` (已整合至 README.md) `docs/README.en.md`
+- [x] `docs/architecture.zh-TW.md` - 架構設計 `docs/architecture.en.md`
+- [x] `docs/api-tools.zh-TW.md` - API 與工具說明 `docs/api-tools.en.md`
+- [x] `docs/security.zh-TW.md` - 安全性設定 `docs/security.en.md`
+- [x] `docs/release-process.zh-TW.md` - 發布流程 `docs/release-process.en.md`
 
 ### 腳本
 

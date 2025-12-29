@@ -6,11 +6,11 @@ run:
 
 linters:
   enable:
-    - gofmt
+
     - govet
     - errcheck
     - staticcheck
-    - gosimple
+
     - ineffassign
     - unused
     - misspell

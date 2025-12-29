@@ -19,7 +19,7 @@ func NewExplainHandler(client *victorialogs.Client) *ExplainHandler {
 }
 
 // Handle handles vlogs-explain request
-func (h *ExplainHandler) Handle(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+func (h *ExplainHandler) Handle(_ context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
 	args, ok := request.Params.Arguments.(map[string]interface{})
 	if !ok {
 		return mcp.NewToolResultError("invalid request parameters"), nil
@@ -59,7 +59,7 @@ Documentation: https://docs.victoriametrics.com/victorialogs/logsql/
 }
 
 // Explain executes query explanation
-func (h *ExplainHandler) Explain(ctx context.Context, query string) (string, error) {
+func (h *ExplainHandler) Explain(_ context.Context, query string) (string, error) {
 	if query == "" {
 		return "", victorialogs.ErrInvalidQuery
 	}

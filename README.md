@@ -3,6 +3,8 @@
 [![Go Version](https://img.shields.io/github/go-mod/go-version/vincent119/victorialogs-mcp)](go.mod)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+[English Documentation](docs/README.en.md)
+
 一個基於 [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) 構建的 VictoriaLogs 伺服器，讓 AI 助手（如 Claude、Cline）能夠直接查詢與分析 VictoriaLogs 中的日誌數據。
 
 ## ✨ 特色
@@ -62,7 +64,7 @@ policy:
 ## 🛠️ 可用工具 (Tools)
 
 | 工具名稱 | 描述 |
-|----------|------|
+| :--- | :--- |
 | `vlogs-query` | 執行 LogsQL 查詢 |
 | `vlogs-stats` | 查詢日誌統計資料 (Hits) |
 | `vlogs-schema` | 探索 Streams 與 Fields |
